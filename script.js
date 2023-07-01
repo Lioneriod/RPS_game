@@ -11,11 +11,14 @@ function getcomputerchoice(){
     }
 }
 
-// A function to format the player input, and then compare it with the computer choice
-// for starters, we try with ties
-// Then, we work with either the player choosing the right hand or the computer choosing the right hand
+// A function to format the player input
+// and then compare it with the computer choice
+// For starters, we try with ties
+// Then, we work with either the player choosing the right hand or 
+// the computer choosing the right hand
 function playRound(playerselection, computerselection){
-    playerselection = playerselection.charAt(0).toUpperCase() + playerselection.slice(1);
+    playerselection = playerselection.charAt(0).toUpperCase() + 
+    playerselection.slice(1);
     if(playerselection === computerselection){
         return("Tie");
     } else if (playerselection === "Rock"){
