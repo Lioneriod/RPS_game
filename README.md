@@ -1,2 +1,3 @@
 # RPS_game
-A rock paper scisors game to try my js skills
+
+A rock paper scissors game to try my js skills
