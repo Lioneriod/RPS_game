@@ -1,49 +1,107 @@
-// Code that will take the focus time,
-// the relaxing time and the big relaxing time.
-// And spit out the total time and the total focus time
-const focustime = 25;
-const relaxtime = 5;
-const loopunit = 4;
-const relaxunit = 3;
-const bigrelaxtime = 15;
-const bigloopunit = 1;
+/*
+The problem: Creating a code that will make the computer choose a hand from 
+rock, paper and scissors to battle against the player, and thus defining a 
+winner, with points and wins counting
 
-function totaltime() {
-  return (
-    (focustime * loopunit + relaxtime * relaxunit + bigrelaxtime) * bigloopunit
-  );
+The plan: For now, the user needs to input the hand through console command,
+using only console for visual representations and values.
+
+The Pseudocode:
+1. Computer launches a random value between 0 and 1, representing each hand
+2. User inputs value
+2. Code compares user input value with computer randomly selected value
+3. Console logs their values/hands and the winner
+*/
+
+function getComputerChoice(computerchoice) {
+  computerchoice = Math.floor(Math.random() * 3);
+  if (computerchoice === 0) {
+    return "rock";
+  } else if (computerchoice === 1) {
+    return "paper";
+  } else {
+    return "scissors";
+  }
 }
 
-function realfocustime() {
-  return focustime * loopunit * bigloopunit;
+let computerhand = getComputerChoice();
+console.log("Computer chose " + computerhand + "!");
+
+function playround(playerSelection, computerSelection) {
+  playerSelection = playerSelection.toLowerCase();
+  if (playerSelection === computerSelection) {
+    return "Tie!";
+  } else if (playerSelection === "rock") {
+    if (computerSelection === "paper") {
+      return (
+        "You lose! " +
+        computerSelection +
+        " " +
+        "beats" +
+        " " +
+        playerSelection +
+        "!"
+      );
+    } else {
+      return (
+        "Computer loses! " +
+        playerSelection +
+        " " +
+        "beats" +
+        " " +
+        computerSelection +
+        "!"
+      );
+    }
+  } else if (playerSelection === "paper") {
+    if (computerSelection === "scissors") {
+      return (
+        "You lose! " +
+        computerSelection +
+        " " +
+        "beats" +
+        " " +
+        playerSelection +
+        "!"
+      );
+    } else {
+      return (
+        "Computer loses! " +
+        playerSelection +
+        " " +
+        "beats" +
+        " " +
+        computerSelection +
+        "!"
+      );
+    }
+  } else if (playerSelection === "scissors") {
+    if (computerSelection === "rock") {
+      return (
+        "You lose! " +
+        computerSelection +
+        " " +
+        "beats" +
+        " " +
+        playerSelection +
+        "!"
+      );
+    } else {
+      return (
+        "Computer loses! " +
+        playerSelection +
+        " " +
+        "beats" +
+        " " +
+        computerSelection +
+        "!"
+      );
+    }
+  } else {
+    return "ERROR!";
+  }
 }
 
-function timeconverter(num) {
-  let hours = Math.floor(num / 60);
-  let minutes = num % 60;
-  return hours + ":" + minutes + "0";
-}
-
-const totaltimeresult = timeconverter(totaltime());
-const totalfocustime = timeconverter(realfocustime());
-
-if (realfocustime() > 200) {
-  console.log("You have reached your goal!");
-  console.log(totalfocustime);
-  console.log(totaltimeresult);
-} else {
-  console.log("You haven't reached your goal!");
-  console.log(totaltimeresult);
-  console.log(totalfocustime);
-  console.log(realfocustime());
-}
-
-const weekgoal = timeconverter(totaltime() * 6);
-console.log(weekgoal);
-
-const monthgoal = timeconverter(totaltime() * 6 * 4);
-console.log(monthgoal);
-
-const yeargoal = timeconverter(totaltime() * 6 * 4 * 12);
-console.log(yeargoal);
-console.log(totaltime() * 6 * 4 * 12);
+let playerhand = prompt("Please enter your hand", "rock, paper or scissors?");
+let round = playround(playerhand, getComputerChoice());
+console.log(round);
