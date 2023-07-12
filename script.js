@@ -28,7 +28,6 @@ let computerhand = getComputerChoice();
 console.log("Computer chose " + computerhand + "!");
 
 function playround(playerSelection, computerSelection) {
-  playerSelection = playerSelection.toLowerCase();
   if (playerSelection === computerSelection) {
     return "Tie!";
   } else if (playerSelection === "rock") {
@@ -102,6 +101,7 @@ function playround(playerSelection, computerSelection) {
   }
 }
 
-let playerhand = prompt("Please enter your hand", "rock, paper or scissors?");
+// how to make the thing bellow work?
+let playerhand = document.getElementsByClassName("hands");
 let round = playround(playerhand, getComputerChoice());
 console.log(round);
