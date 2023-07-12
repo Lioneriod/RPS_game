@@ -102,6 +102,21 @@ function playround(playerSelection, computerSelection) {
 }
 
 // how to make the thing bellow work?
-let playerhand = document.getElementsByClassName("hands");
+const hand1 = document.querySelector(".rock");
+const hand2 = document.querySelector(".paper");
+const hand3 = document.querySelector(".scissors");
+hand1.addEventListener(click, e => {
+  return "rock"
+});
+
+hand2.addEventListener(click, e => {
+  return "paper"
+});
+
+hand3.addEventListener(click, e => {
+  return "scissors"
+});
+
+let playerhand = 
 let round = playround(playerhand, getComputerChoice());
 console.log(round);

@@ -62,7 +62,7 @@ body{
     background-color: #f5faef;
 }
 
-.body>.battle{
+.body > .battle{
     display: flex;
     flex: 1 1 initial;
     flex-wrap: wrap;
@@ -73,7 +73,7 @@ body{
     text-align: center;
 }
 
-.body>.battle>.enemy{
+.body > .battle > .enemy{
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -97,7 +97,7 @@ body{
     font-size: 30px;
 }
 
-.body>.battle>.enemy>img{
+.body > .battle > .enemy > img{
     display: flex;
     flex: 1 1 initial;
     max-width: 255px;
@@ -106,7 +106,7 @@ body{
     object-position: 20% 65%; 
 }
 
-.body>.battle>.player{
+.body > .battle > .player{
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -148,6 +148,19 @@ body{
     text-align: center;
     filter: invert(100%) sepia(51%) saturate(426%) 
     hue-rotate(1deg) brightness(110%) contrast(96%);
+}
+
+.body .score{
+    display: flex;
+    flex-direction: column;
+    border-left: 2px solid #008080;
+    height: 500px;
+    width: auto;
+    flex: 1 1 initial;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    padding: 0px 50px;
 }
 
 .footer{
