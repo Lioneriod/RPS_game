@@ -27,7 +27,7 @@ function getComputerChoice(computerchoice) {
 let computerhand = getComputerChoice();
 console.log("Computer chose " + computerhand + "!");
 
-function playround(playerSelection, computerSelection) {
+function playRound(playerSelection, computerSelection) {
   if (playerSelection === computerSelection) {
     return "Tie!";
   } else if (playerSelection === "rock") {
@@ -101,22 +101,25 @@ function playround(playerSelection, computerSelection) {
   }
 }
 
-// how to make the thing bellow work?
-const hand1 = document.querySelector(".rock");
-const hand2 = document.querySelector(".paper");
-const hand3 = document.querySelector(".scissors");
-hand1.addEventListener(click, e => {
-  return "rock"
+let playerChoice = "";
+
+const rock = document.querySelector(".rock");
+rock.addEventListener("click", () => {
+  playerChoice = "rock";
+  let round = playRound(playerChoice, getComputerChoice());
+  console.log(round);
 });
 
-hand2.addEventListener(click, e => {
-  return "paper"
+const paper = document.querySelector(".paper");
+paper.addEventListener("click", () => {
+  playerChoice = "paper";
+  let round = playRound(playerChoice, getComputerChoice());
+  console.log(round);
 });
 
-hand3.addEventListener(click, e => {
-  return "scissors"
+const scissors = document.querySelector(".scissors");
+scissors.addEventListener("click", () => {
+  playerChoice = "scissors";
+  let round = playRound(playerChoice, getComputerChoice());
+  console.log(round);
 });
-
-let playerhand = 
-let round = playround(playerhand, getComputerChoice());
-console.log(round);
