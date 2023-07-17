@@ -13,22 +13,25 @@ The Pseudocode:
 3. Console logs their values/hands and the winner
 */
 
-function getComputerChoice(computerchoice) {
-  computerchoice = Math.floor(Math.random() * 3);
-  if (computerchoice === 0) {
-    return "rock";
-  } else if (computerchoice === 1) {
-    return "paper";
-  } else {
-    return "scissors";
+function getComputerChoice(computerChoice) {
+  computerChoice = Math.floor(Math.random() * 3);
+  while (computerChoice < 3) {
+    if (computerChoice === 0) {
+      document.querySelector(".announcerHand").innerHTML = "rock";
+      return "rock";
+    } else if (computerChoice === 1) {
+      document.querySelector(".announcerHand").innerHTML = "paper";
+      return "paper";
+    } else {
+      document.querySelector(".announcerHand").innerHTML = "scissors";
+      return "scissors";
+    }
   }
 }
 
 // For debugging
-let computerhand = getComputerChoice();
-console.log("Computer chose " + computerhand + "!");
-
-// To make the code cleaner:
+let computerHand = getComputerChoice();
+console.log("Computer chose " + computerHand + "!");
 
 // Main function for each round
 function playRound(playerSelection, computerSelection) {
@@ -80,6 +83,37 @@ let playerScore = 0;
 
 document.querySelector(".computerScore").innerHTML = computerScore;
 document.querySelector(".playerScore").innerHTML = playerScore;
+document.querySelector(".announcerHand").innerHTML = " ";
+
+// A complicated function to check for wins and losses
+// and also stop after scoring 3 points
+function scoreChecker() {
+  let round = playRound(playerChoice, getComputerChoice());
+  while (playerScore < 3 && computerScore < 3) {
+    if (round[4] === "w") {
+      return (document.querySelector(".playerScore").innerHTML = ++playerScore);
+    } else if (round[4] === "l") {
+      return (document.querySelector(".computerScore").innerHTML =
+        ++computerScore);
+    } else if (round[3] === "!") {
+      return;
+    } else {
+      console.log("ERROR");
+    }
+  }
+}
+
+// Code to create the winning/losing message
+function winLose() {
+  if (playerScore >= 3) {
+    document.querySelector(".result").innerHTML =
+      "Congrats, you kept your soul!";
+  } else if (computerScore >= 3) {
+    document.querySelector(".result").innerHTML = "Yep, you ded";
+  } else {
+    document.querySelector(".result").innerHTML = " ";
+  }
+}
 
 // To setup each button
 let playerChoice = "";
@@ -88,52 +122,25 @@ const rock = document.querySelector(".rock");
 rock.addEventListener("click", () => {
   playerChoice = "rock";
   let round = playRound(playerChoice, getComputerChoice());
-  document.querySelector(".announcerHand").innerHTML = computerhand;
-  // A kinda complicated checker for wins and losses
-  if (round[4] === "w") {
-    return (document.querySelector(".playerScore").innerHTML = ++playerScore);
-  } else if (round[4] === "l") {
-    return (document.querySelector(".computerScore").innerHTML =
-      ++computerScore);
-  } else if (round[3] === "!") {
-    return;
-  } else {
-    console.log("ERROR");
-  }
+  // Call the function to check wins and losses
+  scoreChecker();
+  winLose();
 });
 
 const paper = document.querySelector(".paper");
 paper.addEventListener("click", () => {
   playerChoice = "paper";
   let round = playRound(playerChoice, getComputerChoice());
-  document.querySelector(".announcerHand").innerHTML = computerhand;
-  // A kinda complicated checker for wins and losses
-  if (round[4] === "w") {
-    return (document.querySelector(".playerScore").innerHTML = ++playerScore);
-  } else if (round[4] === "l") {
-    return (document.querySelector(".computerScore").innerHTML =
-      ++computerScore);
-  } else if (round[3] === "!") {
-    return;
-  } else {
-    console.log("ERROR");
-  }
+  // Call the function to check wins and losses
+  scoreChecker();
+  winLose();
 });
 
 const scissors = document.querySelector(".scissors");
 scissors.addEventListener("click", () => {
   playerChoice = "scissors";
   let round = playRound(playerChoice, getComputerChoice());
-  document.querySelector(".announcerHand").innerHTML = computerhand;
-  // A kinda complicated checker for wins and losses
-  if (round[4] === "w") {
-    return (document.querySelector(".playerScore").innerHTML = ++playerScore);
-  } else if (round[4] === "l") {
-    return (document.querySelector(".computerScore").innerHTML =
-      ++computerScore);
-  } else if (round[3] === "!") {
-    return;
-  } else {
-    console.log("ERROR");
-  }
+  // Call the function to check wins and losses
+  scoreChecker();
+  winLose();
 });
