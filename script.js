@@ -78,8 +78,8 @@ function playRound(playerSelection, computerSelection) {
 let computerScore = 0;
 let playerScore = 0;
 
-document.querySelector(".computerScore").innerHTML += computerScore;
-document.querySelector(".playerScore").innerHTML += playerScore;
+document.querySelector(".computerScore").innerHTML = computerScore;
+document.querySelector(".playerScore").innerHTML = playerScore;
 
 // To setup each button
 let playerChoice = "";
@@ -88,12 +88,13 @@ const rock = document.querySelector(".rock");
 rock.addEventListener("click", () => {
   playerChoice = "rock";
   let round = playRound(playerChoice, getComputerChoice());
-  console.log(round);
+  document.querySelector(".announcerHand").innerHTML = computerhand;
   // A kinda complicated checker for wins and losses
   if (round[4] === "w") {
-    return playerScore++;
+    return (document.querySelector(".playerScore").innerHTML = ++playerScore);
   } else if (round[4] === "l") {
-    return computerScore++;
+    return (document.querySelector(".computerScore").innerHTML =
+      ++computerScore);
   } else if (round[3] === "!") {
     return;
   } else {
@@ -105,11 +106,13 @@ const paper = document.querySelector(".paper");
 paper.addEventListener("click", () => {
   playerChoice = "paper";
   let round = playRound(playerChoice, getComputerChoice());
-  console.log(round);
+  document.querySelector(".announcerHand").innerHTML = computerhand;
+  // A kinda complicated checker for wins and losses
   if (round[4] === "w") {
-    return playerScore++;
+    return (document.querySelector(".playerScore").innerHTML = ++playerScore);
   } else if (round[4] === "l") {
-    return computerScore++;
+    return (document.querySelector(".computerScore").innerHTML =
+      ++computerScore);
   } else if (round[3] === "!") {
     return;
   } else {
@@ -121,11 +124,13 @@ const scissors = document.querySelector(".scissors");
 scissors.addEventListener("click", () => {
   playerChoice = "scissors";
   let round = playRound(playerChoice, getComputerChoice());
-  console.log(round);
+  document.querySelector(".announcerHand").innerHTML = computerhand;
+  // A kinda complicated checker for wins and losses
   if (round[4] === "w") {
-    return playerScore++;
+    return (document.querySelector(".playerScore").innerHTML = ++playerScore);
   } else if (round[4] === "l") {
-    return computerScore++;
+    return (document.querySelector(".computerScore").innerHTML =
+      ++computerScore);
   } else if (round[3] === "!") {
     return;
   } else {

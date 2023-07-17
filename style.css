@@ -87,6 +87,12 @@ body{
     flex: 1 1 initial;
 }
 
+.announcer{
+    font-family: "Roboto Mono", sans-serif;
+    font-size: 30px;
+    text-align: center;
+}
+
 .narrator,
 .score{
     font-family: "Roboto Mono", sans-serif;
@@ -161,7 +167,7 @@ body{
     justify-content: center;
     align-items: center;
     gap: 20px;
-    padding: 0px 50px 0px 120px;
+    padding: 0px 50px 0px 50px;
 }
 
 .footer{
