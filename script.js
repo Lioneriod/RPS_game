@@ -89,7 +89,7 @@ document.querySelector(".announcerHand").innerHTML = " ";
 // and also stop after scoring 3 points
 function scoreChecker() {
   let round = playRound(playerChoice, getComputerChoice());
-  while (playerScore < 3 && computerScore < 3) {
+  while (playerScore < 4 && computerScore < 4) {
     if (round[4] === "w") {
       return (document.querySelector(".playerScore").innerHTML = ++playerScore);
     } else if (round[4] === "l") {
@@ -105,42 +105,63 @@ function scoreChecker() {
 
 // Code to create the winning/losing message
 function winLose() {
-  if (playerScore >= 3) {
+  if (playerScore === 3) {
     document.querySelector(".result").innerHTML =
       "Congrats, you kept your soul!";
-  } else if (computerScore >= 3) {
+  } else if (computerScore === 3) {
     document.querySelector(".result").innerHTML = "Yep, you ded";
   } else {
     document.querySelector(".result").innerHTML = " ";
   }
 }
 
-// To setup each button
+// Function to reset the game
+function resetGame() {
+  if (playerScore > 2 || computerScore > 2) {
+    playerScore = 0;
+    computerScore = 0;
+    document.querySelector(".playerScore").innerHTML = playerScore;
+    document.querySelector(".computerScore").innerHTML = computerScore;
+  } else {
+    return;
+  }
+}
+
+// To make the code extra clean
+function gameFunctions() {
+  scoreChecker();
+  winLose();
+  resetGame();
+}
+// To setup the initial value of each button
 let playerChoice = "";
 
 const rock = document.querySelector(".rock");
 rock.addEventListener("click", () => {
   playerChoice = "rock";
   let round = playRound(playerChoice, getComputerChoice());
-  // Call the function to check wins and losses
+  // Call the function that groups functions
   scoreChecker();
   winLose();
+  resetGame();
 });
 
 const paper = document.querySelector(".paper");
 paper.addEventListener("click", () => {
   playerChoice = "paper";
   let round = playRound(playerChoice, getComputerChoice());
-  // Call the function to check wins and losses
+  // Call the function that groups functions
   scoreChecker();
   winLose();
+  resetGame();
 });
 
 const scissors = document.querySelector(".scissors");
 scissors.addEventListener("click", () => {
   playerChoice = "scissors";
   let round = playRound(playerChoice, getComputerChoice());
-  // Call the function to check wins and losses
+  // Call the function that groups functions
   scoreChecker();
   winLose();
+  resetGame();
 });
